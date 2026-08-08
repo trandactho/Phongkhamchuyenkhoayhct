@@ -258,13 +258,24 @@
     .btn-map { margin-top: 15px; display: block; text-align: center; background: var(--primary); color: var(--white); padding: 10px 16px; border-radius: var(--radius-sm); text-decoration: none; font-weight: 500; font-size: 13.5px; transition: var(--transition); }
     .btn-map:hover { background: var(--primary-dark); }
 
-    /* --- FORM ĐẶT LỊCH --- */
-    .booking-wrapper { background: var(--white); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-soft); max-width: 750px; margin: 0 auto; border: 1px solid #eaeaea; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    /* --- FORM ĐẶT LỊCH SỬA LỖI TRÀN KHUNG --- */
+    .booking-wrapper { background: var(--white); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-soft); max-width: 750px; margin: 0 auto; border: 1px solid #eaeaea; width: 100%; }
+    .form-grid { display: grid; grid-template-columns: 1fr; gap: 14px; width: 100%; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; width: 100%; }
     .form-group.full { grid-column: 1 / -1; }
     .form-group label { font-weight: 600; color: var(--primary); font-size: 13px; }
-    .form-group input, .form-group select, .form-group textarea { padding: 10px 12px; border: 1px solid #ddd; border-radius: var(--radius-sm); font-size: 13.5px; outline: none; transition: var(--transition); background: #fafafa; }
+    .form-group input, .form-group select, .form-group textarea { 
+      width: 100%; 
+      max-width: 100%; 
+      box-sizing: border-box; 
+      padding: 10px 12px; 
+      border: 1px solid #ddd; 
+      border-radius: var(--radius-sm); 
+      font-size: 13.5px; 
+      outline: none; 
+      transition: var(--transition); 
+      background: #fafafa; 
+    }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); background: var(--white); box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.12); }
     .btn-submit { background: var(--accent); color: var(--white); border: none; padding: 13px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; transition: var(--transition); }
     .btn-submit:hover { background: var(--accent-hover); }
@@ -288,6 +299,7 @@
       .hero-logo-precursor { height: 48px; }
       .section-title h2 { font-size: 30px; }
       .booking-wrapper { padding: 40px; }
+      .form-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
