@@ -1,0 +1,22 @@
+{
+  "name": "Phòng Khám YHCT - Vật Lý Trị Liệu",
+  "short_name": "Phòng Khám YHCT",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0a2f1d",
+  "theme_color": "#0a2f1d",
+  "icons": [
+    {
+      "src": "logo-moi.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo-moi.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
