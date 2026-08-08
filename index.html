@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phòng Khám Chuyên Khoa YHCT - Vật Lý Trị Liệu Phục Hồi Chức Năng</title>
+  <link rel="canonical" href="https://dailuantriyhct.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0a2f1d;
+      --primary-dark: #051a10;
+      --accent: #c59b27;
+      --accent-hover: #a8821d;
+      --bg-light: #fcfbf7;
+      --bg-alt: #f4f1ea;
+      --text-dark: #2c3e50;
+      --text-light: #555555;
+      --white: #ffffff;
+      --shadow-soft: 0 6px 20px rgba(0,0,0,0.05);
+      --shadow-hover: 0 10px 25px rgba(0,0,0,0.1);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; scroll-behavior: smooth; }
+    body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.65; }
+
+    /* --- HEADER CỐ ĐỊNH TẠI ĐỈNH --- */
+    header { 
+      background: var(--primary); 
+      color: var(--white); 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+      width: 100%; 
+    }
+    
+    .header-top { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 10px 16px; 
+      border-bottom: 1px solid rgba(197, 155, 39, 0.25);
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 12px;
+    }
+
+    .header-logo-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1.5px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      padding: 2px;
+    }
+    .header-logo-box img { width: 100%; height: 100%; object-fit: contain; }
+
+    .header-logo-spacer {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+
+    .clinic-title-large {
+      text-align: center;
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.3;
+      letter-spacing: 0.2px;
+      flex-grow: 1;
+    }
+    .clinic-title-sub {
+      display: block;
+      font-size: 9px;
+      font-family: 'Roboto', sans-serif;
+      color: var(--accent);
+      font-weight: 400;
+      margin-top: 2px;
+      text-transform: none;
+    }
+
+    .header-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6px 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .header-nav::-webkit-scrollbar { display: none; }
+    
+    nav ul { 
+      display: flex; 
+      list-style: none; 
+      gap: 8px; 
+      align-items: center; 
+      justify-content: space-between; 
+      width: 100%; 
+      min-width: max-content; 
+    }
+    nav a { 
+      color: var(--white); 
+      text-decoration: none; 
+      font-weight: 500; 
+      font-size: 11.5px; 
+      white-space: nowrap; 
+      transition: var(--transition); 
+      padding: 4px 8px; 
+      border-radius: var(--radius-sm); 
+      text-align: center; 
+    }
+    nav a:hover { color: var(--accent); background: rgba(255,255,255,0.08); }
+    .btn-header { 
+      background: var(--accent); 
+      color: var(--white) !important; 
+      padding: 4px 12px; 
+      border-radius: 20px; 
+      font-weight: 700; 
+      font-size: 11.5px; 
+    }
+    .btn-header:hover { background: var(--accent-hover); }
+
+    /* --- HERO SECTION --- */
+    .hero { 
+      background: linear-gradient(rgba(10, 47, 29, 0.88), rgba(10, 47, 29, 0.88)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80') center/cover; 
+      color: var(--white); 
+      text-align: center; 
+      padding: 70px 20px; 
+    }
+    .hero-top-slogan { font-family: 'Dancing Script', cursive; font-size: 28px; color: var(--accent); margin-bottom: 10px; font-weight: 700; font-style: italic; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--white); margin-bottom: 16px; text-transform: uppercase; line-height: 1.4; }
+    
+    .hero-sub { 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 12.5px; 
+      color: #e2e8f0; 
+      margin: 0 auto 25px; 
+      font-style: italic; 
+      max-width: 650px;
+    }
+    .hero-logo-precursor {
+      height: 42px;
+      width: auto;
+      border-radius: 4px;
+      background: #ffffff;
+      padding: 2px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .hero-sub-text {
+      text-align: left;
+      line-height: 1.45;
+    }
+
+    .btn-hero { background: var(--accent); color: var(--white); padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; transition: var(--transition); display: inline-block; box-shadow: 0 4px 15px rgba(197, 155, 39, 0.3); }
+    .btn-hero:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(197, 155, 39, 0.4); }
+
+    /* --- CONTAINER & ABOUT SECTION --- */
+    .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
+    .section-title { text-align: center; margin-bottom: 35px; }
+    .section-title h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--primary); position: relative; display: inline-block; padding-bottom: 10px; }
+    .section-title h2::after { content: ''; width: 45px; height: 3px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px; }
+
+    .about-box { 
+      background: var(--white); 
+      padding: 35px; 
+      border-radius: var(--radius-md); 
+      box-shadow: var(--shadow-soft); 
+      border-left: 4px solid var(--accent); 
+    }
+    .about-box h3 { color: var(--primary); font-size: 20px; margin-bottom: 16px; font-family: 'Playfair Display', serif; text-transform: uppercase; line-height: 1.4; }
+    
+    .about-text { color: var(--text-light); font-size: 14.5px; line-height: 1.7; }
+    .about-text p { margin-bottom: 12px; }
+    
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px dashed #e0e0e0;
+    }
+    .highlight-item {
+      background: #faf8f2;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+      font-size: 13.5px;
+    }
+    .highlight-item strong { color: var(--primary); display: block; margin-bottom: 2px; }
+
+    /* --- SERVICES GRID --- */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .service-card { background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-soft); border: 1px solid #eaeaea; transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .service-img { height: 200px; width: 100%; display: block; object-fit: cover; }
+    .service-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .service-content h3 { color: var(--primary); margin-bottom: 8px; font-size: 17px; font-family: 'Playfair Display', serif; }
+    .service-content ul { padding-left: 18px; color: var(--text-light); font-size: 13.5px; }
+    .service-content li { margin-bottom: 4px; }
+
+    /* --- BỆNH LÝ CHUYÊN SÂU --- */
+    .conditions-section { background: var(--primary); color: var(--white); padding: 50px 20px; margin-top: 40px; border-radius: var(--radius-lg); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .conditions-section .section-title h2 { color: var(--white); }
+    .conditions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; }
+    .condition-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(197, 155, 39, 0.25); border-left: 3px solid var(--accent); padding: 18px; border-radius: var(--radius-sm); transition: var(--transition); }
+    .condition-card:hover { background: rgba(255, 255, 255, 0.09); transform: translateY(-2px); }
+    .condition-card h4 { color: var(--accent); font-size: 15px; margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+    .condition-card p { font-size: 13px; color: #e2e8f0; line-height: 1.5; }
+
+    /* --- BÀI TẬP --- */
+    .exercise-link-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+    .exercise-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #faf9f5; border-radius: 6px; border: 1px solid #eee; text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 13px; transition: var(--transition); }
+    .exercise-item:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--accent); }
+
+    /* --- CHI NHÁNH --- */
+    .branches-bg { background-color: var(--bg-alt); }
+    .branches-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .branch-card { background: var(--white); border-radius: var(--radius-md); padding: 25px; box-shadow: var(--shadow-soft); border: 1px solid #eaeaea; display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); }
+    .branch-card:hover { box-shadow: var(--shadow-hover); }
+    .branch-card h3 { color: var(--primary); font-size: 19px; margin-bottom: 12px; border-bottom: 2px solid var(--bg-alt); padding-bottom: 8px; font-family: 'Playfair Display', serif; }
+    .branch-info p { margin-bottom: 8px; font-size: 14px; color: var(--text-dark); }
+    .btn-map { margin-top: 15px; display: block; text-align: center; background: var(--primary); color: var(--white); padding: 10px 16px; border-radius: var(--radius-sm); text-decoration: none; font-weight: 500; font-size: 13.5px; transition: var(--transition); }
+    .btn-map:hover { background: var(--primary-dark); }
+
+    /* --- FORM ĐẶT LỊCH --- */
+    .booking-wrapper { background: var(--white); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-soft); max-width: 750px; margin: 0 auto; border: 1px solid #eaeaea; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-weight: 600; color: var(--primary); font-size: 13px; }
+    .form-group input, .form-group select, .form-group textarea { padding: 10px 12px; border: 1px solid #ddd; border-radius: var(--radius-sm); font-size: 13.5px; outline: none; transition: var(--transition); background: #fafafa; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); background: var(--white); box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.12); }
+    .btn-submit { background: var(--accent); color: var(--white); border: none; padding: 13px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; transition: var(--transition); }
+    .btn-submit:hover { background: var(--accent-hover); }
+
+    /* --- FOOTER --- */
+    footer { background: var(--primary-dark); color: #aaa; padding: 30px 20px; text-align: center; font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); }
+    footer a { color: var(--accent); text-decoration: underline; }
+
+    @media (min-width: 768px) {
+      .header-logo-box, .header-logo-spacer { width: 50px; height: 50px; }
+      .clinic-title-large { font-size: 15px; letter-spacing: 0.4px; }
+      .clinic-title-sub { font-size: 10px; }
+      nav ul { gap: 16px; }
+      nav a { font-size: 13px; padding: 5px 10px; }
+      .btn-header { font-size: 13px; padding: 5px 14px; }
+      .hero { padding: 90px 20px; }
+      .hero h1 { font-size: 30px; }
+      .hero-top-slogan { font-size: 34px; }
+      .hero-sub { font-size: 14px; gap: 16px; }
+      .hero-logo-precursor { height: 48px; }
+      .section-title h2 { font-size: 30px; }
+      .booking-wrapper { padding: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header 2 Tầng Cố Định Top -->
+  <header>
+    <div class="header-top">
+      <div class="header-logo-box" title="Logo Mới">
+        <img src="logo-moi.jpg" alt="Logo Mới">
+      </div>
+
+      <div class="clinic-title-large">
+        PHÒNG KHÁM CHUYÊN KHOA Y HỌC CỔ TRUYỀN - VẬT LÝ TRỊ LIỆU PHỤC HỒI CHỨC NĂNG
+        <span class="clinic-title-sub">Tiền thân: Phòng khám Bs.Trang - Sophie's Clinic</span>
+      </div>
+
+      <div class="header-logo-spacer"></div>
+    </div>
+
+    <div class="header-nav">
+      <nav>
+        <ul>
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#services">Dịch vụ</a></li>
+          <li><a href="#portal">Tra cứu</a></li>
+          <li><a href="#exercises">Bài tập</a></li>
+          <li><a href="#branches">Chi nhánh</a></li>
+          <li><a href="#booking" class="btn-header">Đặt Lịch</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-top-slogan">Chúng tôi lắng nghe sức khoẻ bạn lên tiếng</div>
+    <h1>PHÒNG KHÁM CHUYÊN KHOA Y HỌC CỔ TRUYỀN - VẬT LÝ TRỊ LIỆU PHỤC HỒI CHỨC NĂNG</h1>
+    
+    <div class="hero-sub">
+      <img src="logo-tien-than.jpg" alt="Logo Tiền Thân" class="hero-logo-precursor">
+      <div class="hero-sub-text">
+        Tiền thân: Phòng khám Bs.Trang - Sophie's Clinic,<br>
+        Phòng khám Spine trị liệu cột sống
+      </div>
+    </div>
+
+    <a href="#booking" class="btn-hero">ĐẶT LỊCH KHÁM NGAY</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="container" style="padding-bottom: 0;">
+    <div class="about-box">
+      <h3>GIỚI THIỆU PHÒNG KHÁM CHUYÊN KHOA YHCT & PHỤC HỒI CHỨC NĂNG</h3>
+      
+      <div class="about-text">
+        <p><strong>Phòng khám Chuyên khoa Y học Cổ truyền - Vật lý Trị liệu Phục hồi Chức năng</strong> tự hào quy tụ đội ngũ y bác sĩ chuyên khoa trình độ chuyên môn cao, được đào tạo bài bản và giàu kinh nghiệm điều trị thực tế.</p>
+        <p>Bằng việc tiên phong kết hợp tinh hoa Đông y với hệ thống kỹ thuật hiện đại bậc nhất, phòng khám cung cấp giải pháp điều trị toàn diện, an toàn và bảo tồn tối ưu cho các bệnh lý xương khớp, cột sống, thần kinh. Chúng tôi cam kết mang lại hiệu quả vượt trội, rút ngắn thời gian phục hồi và giúp người bệnh lấy lại chất lượng cuộc sống.</p>
+        
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <strong>👨‍⚕️ Đội ngũ chuyên môn cao</strong>
+            Quy tụ các bác sĩ Chuyên khoa YHCT & PHCN giàu kinh nghiệm, thăm khám tận tâm, chẩn đoán chính xác và cá nhân hóa phác đồ điều trị.
+          </div>
+          <div class="highlight-item">
+            <strong>⚡ Kỹ thuật cấy chỉ hiện đại</strong>
+            Ứng dụng kỹ thuật cấy chỉ chuyên sâu kết hợp các dòng chỉ cao cấp nhập khẩu (Hàn Quốc, Nhật Bản) giúp giảm đau hiệu quả và duy trì tác dụng lâu dài.
+          </div>
+          <div class="highlight-item">
+            <strong>🏥 Trang thiết bị tân tiến</strong>
+            Đầu tư đồng bộ hệ thống máy móc trị liệu công nghệ cao: Sóng xung kích, Siêu âm trị liệu, Từ trường trường quay, Laser lạnh.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="container">
+    <div class="section-title">
+      <h2>Dịch Vụ & Kỹ Thuật Cao</h2>
+    </div>
+    <div class="services-grid">
+      
+      <div class="service-card">
+        <img src="cay-chi.png" alt="Cấy chỉ kỹ thuật cao" class="service-img">
+        <div class="service-content">
+          <div>
+            <h3>Cấy Chỉ Kỹ Thuật Cao</h3>
+            <ul>
+              <li>Dòng chỉ cao cấp Hàn Quốc, Nhật Bản</li>
+              <li>An toàn, hiệu quả, ít đau</li>
+              <li>Chữa trị tận gốc bệnh mãn tính</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="cham-cuu.png" alt="Châm cứu vật lý trị liệu" class="service-img">
+        <div class="service-content">
+          <div>
+            <h3>Châm Cứu & Trị Liệu</h3>
+            <ul>
+              <li>Châm cứu, Thủy châm</li>
+              <li>Xoa bóp bấm huyệt chuyên sâu</li>
+              <li>Tập vật lý trị liệu - PHCN</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img src="may-moc.png" alt="Hệ thống máy hiện đại" class="service-img">
+        <div class="service-content">
+          <div>
+            <h3>Hệ Thống Máy Hiện Đại</h3>
+            <ul>
+              <li>Siêu âm, Sóng ngắn, Sóng xung kích</li>
+              <li>Từ trường, Laser lạnh</li>
+              <li>Hỗ trợ phục hồi tối ưu</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Điều Trị Các Bệnh Lý Chuyên Sâu -->
+    <div class="conditions-section">
+      <div class="section-title" style="margin-bottom: 25px;">
+        <h2>Điều Trị Các Bệnh Lý Chuyên Sâu</h2>
+      </div>
+      <div class="conditions-grid">
+        <div class="condition-card">
+          <h4>🦴 Thoái Hóa & Đau Xương Khớp</h4>
+          <p>Điều trị hiệu quả các chứng đau cổ vai gáy, đau lưng, đau gối và các khớp ngón.</p>
+        </div>
+        <div class="condition-card">
+          <h4>⚡ Thoát Vị Đĩa Đệm & Chấn Thương</h4>
+          <p>Chuyên sâu thoát vị đĩa đệm cổ, lưng, hỗ trợ phục hồi bong gân, trật khớp.</p>
+        </div>
+        <div class="condition-card">
+          <h4>🧠 Di Chứng Thần Kinh & Liệt</h4>
+          <p>Hỗ trợ điều trị liệt nửa người, liệt mặt do tổn thương dây thần kinh số 5 và số 7.</p>
+        </div>
+        <div class="condition-card">
+          <h4>🔥 Đau Thần Kinh & Đau Sau Zona</h4>
+          <p>Giảm nhanh các cơn đau tê do chèn ép dây thần kinh và di chứng đau sau Zona.</p>
+        </div>
+        <div class="condition-card">
+          <h4>🌙 Bệnh Lý Mãn Tính & Tiền Đình</h4>
+          <p>Cải thiện chứng mất ngủ kéo dài, rối loạn tiền đình, đau đầu hiệu quả.</p>
+        </div>
+        <div class="condition-card">
+          <h4>🌿 Tiêu Hóa & Hô Hấp</h4>
+          <p>Hỗ trợ điều trị trào ngược dạ dày thực quản, viêm mũi xoang kinh niên.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cổng Tra Cứu Section -->
+  <section id="portal" class="container" style="padding-top: 0; padding-bottom: 0;">
+    <div class="section-title">
+      <h2>Cổng Tra Cứu YHCT</h2>
+    </div>
+    <div style="background: var(--white); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-soft); border: 1px solid #eaeaea; text-align: center; max-width: 750px; margin: 0 auto;">
+      <h3 style="color: var(--primary); font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 10px;">Website: dailuantriyhct.com</h3>
+      <p style="color: var(--text-light); margin-bottom: 20px; font-size: 14.5px;">Truy cập cổng thông tin chính thức để cập nhật kiến thức y học cổ truyền, bài viết chuyên sâu và tư vấn sức khỏe từ chuyên gia.</p>
+      <a href="https://dailuantriyhct.com" target="_blank" class="btn-hero">Truy Cập dailuantriyhct.com</a>
+    </div>
+  </section>
+
+  <!-- Free Exercises Section -->
+  <section id="exercises" class="container">
+    <div class="section-title">
+      <h2>Bài Tập Trị Liệu Tại Nhà</h2>
+    </div>
+    <p style="text-align: center; color: var(--text-light); margin-bottom: 25px; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 14px;">Các bài tập vận động hỗ trợ giúp giảm đau mỏi cổ vai gáy và cột sống lưng hiệu quả do phòng khám biên soạn.</p>
+    
+    <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      <div class="service-card">
+        <div class="service-content">
+          <div>
+            <h3>🧘 Bài Tập Cổ</h3>
+            <p style="color: var(--text-light); font-size: 13.5px; margin-bottom: 12px;">Hướng dẫn các động tác vận động vùng cổ giúp thư giãn cơ và giảm đau mỏi hiệu quả.</p>
+          </div>
+          <a href="https://fb.watch/i1awqCp0PA/?mibextid=qC1gEa" target="_blank" class="btn-map" style="margin-top: 12px;">▶ Xem Video Bài Tập Cổ</a>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-content">
+          <div>
+            <h3>🏋️ Hệ Thống Bài Tập Lưng</h3>
+            <p style="color: var(--text-light); font-size: 13.5px; margin-bottom: 8px;">Chuỗi bài tập vận động cột sống lưng từ cơ bản đến chuyên sâu:</p>
+            <div class="exercise-link-list">
+              <a href="https://fb.watch/i1aKxNfrpx/?mibextid=qC1gEa" target="_blank" class="exercise-item"><span>📌 Bài Tập Lưng 1</span> <span>Xem &rarr;</span></a>
+              <a href="https://fb.watch/i1aJ93lj_a/?mibextid=qC1gEa" target="_blank" class="exercise-item"><span>📌 Bài Tập Lưng 2</span> <span>Xem &rarr;</span></a>
+              <a href="https://fb.watch/i1al0M1hZM/?mibextid=qC1gEa" target="_blank" class="exercise-item"><span>📌 Bài Tập Lưng 3</span> <span>Xem &rarr;</span></a>
+              <a href="https://fb.watch/i1aH2PXI9y/?mibextid=qC1gEa" target="_blank" class="exercise-item"><span>📌 Bài Tập Lưng 4</span> <span>Xem &rarr;</span></a>
+              <a href="https://fb.watch/i1aE9-XM7r/?mibextid=qC1gEa" target="_blank" class="exercise-item"><span>📌 Bài Tập Lưng 5</span> <span>Xem &rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Branches Section -->
+  <section id="branches" class="branches-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Hệ Thống Chi Nhánh</h2>
+      </div>
+      <div class="branches-grid">
+        <div class="branch-card">
+          <div>
+            <h3>Chi Nhánh 1</h3>
+            <div class="branch-info">
+              <p>📍 <strong>Địa chỉ:</strong> Tầng lửng 951A Cách Mạng Tháng 8, Phường Tân Sơn Nhất, TP. Hồ Chí Minh</p>
+              <p>📞 <strong>Hotline/Zalo hẹn lịch:</strong> 0326992911</p>
+            </div>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=951A+Cách+Mạng+Tháng+8+Phường+Tân+Sơn+Nhất+TPHCM" target="_blank" class="btn-map">🗺️ Chỉ Đường Chi Nhánh 1</a>
+        </div>
+
+        <div class="branch-card">
+          <div>
+            <h3>Chi Nhánh 2</h3>
+            <div class="branch-info">
+              <p>📍 <strong>Địa chỉ:</strong> Phòng khám Qmedic - Tầng 4, 93 Hoà Hưng, Phường Hoà Hưng, TP. Hồ Chí Minh</p>
+              <p>📞 <strong>Hotline/Zalo hẹn lịch:</strong> 0326992911</p>
+            </div>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=93+Hoà+Hưng+Phường+Hoà+Hưng+Tp.HCM" target="_blank" class="btn-map">🗺️ Chỉ Đường Chi Nhánh 2</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="booking" class="container">
+    <div class="section-title">
+      <h2>Đặt Lịch Khám Trực Tuyến</h2>
+    </div>
+    <div class="booking-wrapper">
+      <form id="bookingForm" onsubmit="alert('Đã gửi thông tin đặt lịch thành công! Phòng khám sẽ liên hệ qua SĐT của quý khách trong thời gian sớm nhất.'); return false;">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Họ và tên *</label>
+            <input type="text" required placeholder="Nguyễn Văn A">
+          </div>
+          <div class="form-group">
+            <label>Số điện thoại / Zalo *</label>
+            <input type="tel" required placeholder="032699xxxx">
+          </div>
+          <div class="form-group">
+            <label>Chọn chi nhánh khám *</label>
+            <select required>
+              <option value="">-- Chọn chi nhánh --</option>
+              <option>CN1: Tầng lửng 951A CMT8, Tân Sơn Nhất, TP.HCM</option>
+              <option>CN2: Phòng khám Qmedic - Tầng 4, 93 Hoà Hưng, TP.HCM</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Dịch vụ khám / Trị liệu</label>
+            <select>
+              <option>Cấy chỉ kỹ thuật cao</option>
+              <option>Châm cứu - Thủy châm</option>
+              <option>Vật lý trị liệu - Phục hồi chức năng</option>
+              <option>Điều trị xương khớp</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ngày khám dự kiến *</label>
+            <input type="date" required>
+          </div>
+          <div class="form-group full">
+            <label>Triệu chứng / Ghi chú</label>
+            <textarea rows="3" placeholder="Mô tả ngắn gọn tình trạng bệnh (đau lưng, mất ngủ, vai gáy...)..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">XÁC NHẬN ĐẶT LỊCH</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 PHÒNG KHÁM CHUYÊN KHOA Y HỌC CỔ TRUYỀN - VẬT LÝ TRỊ LIỆU PHỤC HỒI CHỨC NĂNG (<a href="https://dailuantriyhct.com" target="_blank">dailuantriyhct.com</a>). Hotline/Zalo: 0326992911. Tất cả quyền được bảo lưu.</p>
+  </footer>
+</body>
+</html>
