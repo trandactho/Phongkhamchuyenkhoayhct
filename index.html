@@ -414,18 +414,30 @@
     .form-group { display: flex; flex-direction: column; gap: 6px; width: 100%; }
     .form-group.full { grid-column: 1 / -1; }
     .form-group label { font-weight: 600; color: var(--primary); font-size: 13.5px; }
-    .form-group input, .form-group select, .form-group textarea { 
-      width: 100%; 
-      max-width: 100%; 
-      box-sizing: border-box; 
-      padding: 12px 14px; 
-      border: 1px solid #d1d5db; 
-      border-radius: var(--radius-sm); 
-      font-size: 14px; 
-      outline: none; 
-      transition: var(--transition); 
-      background: #fafafa; 
-    }
+    .form-group input, 
+.form-group select, 
+.form-group textarea { 
+  width: 100%; 
+  max-width: 100%; 
+  box-sizing: border-box; 
+  padding: 0 12px; 
+  height: 44px; /* Cố định chiều cao tất cả ô nhập bằng nhau */
+  border: 1px solid #d1d5db; 
+  border-radius: var(--radius-sm); 
+  font-size: 13.5px; 
+  outline: none; 
+  transition: var(--transition); 
+  background: #fafafa; 
+}
+
+.form-group textarea {
+  height: auto;
+  padding: 10px 12px;
+}
+
+.form-group select option {
+  font-size: 12px;
+}
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
       border-color: var(--accent); 
       background: var(--white); 
@@ -767,14 +779,28 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Dịch vụ khám / Trị liệu</label>
-            <select id="service">
-              <option>Cấy chỉ kỹ thuật cao</option>
-              <option>Châm cứu - Thủy châm</option>
-              <option>Vật lý trị liệu - Phục hồi chức năng</option>
-              <option>Điều trị xương khớp</option>
-            </select>
-          </div>
+  <label>Dịch vụ khám / Trị liệu *</label>
+  <select id="service" required>
+    <option value="">-- Chọn dịch vụ / Bệnh lý --</option>
+    <option>Khám bệnh - Bốc thuốc</option>
+    <option>Cấy chỉ kỹ thuật cao</option>
+    <option>Châm cứu - Bấm huyệt</option>
+    <option>Vật lý trị liệu - PHCN</option>
+    <option>Trị liệu máy cao cấp</option>
+    <option>Thoái hóa & Đau khớp</option>
+    <option>Thoát vị đĩa đệm</option>
+    <option>Đau thần kinh / Zona</option>
+    <option>Di chứng thần kinh & Liệt</option>
+    <option>Mất ngủ - Tiền đình</option>
+    <option>Bệnh Tiêu hóa & Hô hấp</option>
+    <option>Suy nhược & Tuổi già</option>
+    <option>Sức khỏe Phụ nữ</option>
+    <option>Sức khỏe Nam giới</option>
+  </select>
+</div>
+
+
+
           <div class="form-group">
             <label>Ngày khám dự kiến *</label>
             <input type="date" id="date" required>
