@@ -389,7 +389,7 @@
       <h2>Dịch Vụ & Kỹ Thuật Cao</h2>
     </div>
     <div class="services-grid">
-            <div class="service-card">
+      <div class="service-card">
         <img src="bat-mach.png" alt="Khám bệnh chuyên sâu" class="service-img">
         <div class="service-content">
           <div>
@@ -452,7 +452,7 @@
       <div class="section-title" style="margin-bottom: 25px;">
         <h2>Điều Trị Các Bệnh Lý Chuyên Sâu</h2>
       </div>
-            <div class="conditions-grid">
+      <div class="conditions-grid">
         <!-- Nhóm 1: Cơ Xương Khớp - Cột Sống - Dây Thần Kinh -->
         <div class="condition-card">
           <h4>🦴 Thoái Hóa & Đau Xương Khớp</h4>
@@ -585,19 +585,19 @@
       <h2>Đặt Lịch Khám Trực Tuyến</h2>
     </div>
     <div class="booking-wrapper">
-      <form id="bookingForm" onsubmit="alert('Đã gửi thông tin đặt lịch thành công! Phòng khám sẽ liên hệ qua SĐT của quý khách trong thời gian sớm nhất.'); return false;">
+      <form id="bookingForm">
         <div class="form-grid">
           <div class="form-group">
             <label>Họ và tên *</label>
-            <input type="text" required placeholder="Nguyễn Văn A">
+            <input type="text" id="fullname" required placeholder="Nguyễn Văn A">
           </div>
           <div class="form-group">
             <label>Số điện thoại / Zalo *</label>
-            <input type="tel" required placeholder="032699xxxx">
+            <input type="tel" id="phone" required placeholder="032699xxxx">
           </div>
           <div class="form-group">
             <label>Chọn chi nhánh khám *</label>
-            <select required>
+            <select id="branch" required>
               <option value="">-- Chọn chi nhánh --</option>
               <option>CN1: Tầng lửng 951A CMT8, Tân Sơn Nhất, TP.HCM</option>
               <option>CN2: Phòng khám Qmedic - Tầng 4, 93 Hoà Hưng, TP.HCM</option>
@@ -605,7 +605,7 @@
           </div>
           <div class="form-group">
             <label>Dịch vụ khám / Trị liệu</label>
-            <select>
+            <select id="service">
               <option>Cấy chỉ kỹ thuật cao</option>
               <option>Châm cứu - Thủy châm</option>
               <option>Vật lý trị liệu - Phục hồi chức năng</option>
@@ -614,14 +614,14 @@
           </div>
           <div class="form-group">
             <label>Ngày khám dự kiến *</label>
-            <input type="date" required>
+            <input type="date" id="date" required>
           </div>
           <div class="form-group full">
             <label>Triệu chứng / Ghi chú</label>
-            <textarea rows="3" placeholder="Mô tả ngắn gọn tình trạng bệnh (đau lưng, mất ngủ, vai gáy...)..."></textarea>
+            <textarea id="note" rows="3" placeholder="Mô tả ngắn gọn tình trạng bệnh (đau lưng, mất ngủ, vai gáy...)..."></textarea>
           </div>
         </div>
-        <button type="submit" class="btn-submit">XÁC NHẬN ĐẶT LỊCH</button>
+        <button type="submit" class="btn-submit" id="submitBtn">XÁC NHẬN ĐẶT LỊCH</button>
       </form>
     </div>
   </section>
@@ -630,5 +630,45 @@
   <footer>
     <p>&copy; 2026 PHÒNG KHÁM CHUYÊN KHOA Y HỌC CỔ TRUYỀN - VẬT LÝ TRỊ LIỆU PHỤC HỒI CHỨC NĂNG (<a href="https://dailuantriyhct.com" target="_blank">dailuantriyhct.com</a>). Hotline/Zalo: 0326992911. Tất cả quyền được bảo lưu.</p>
   </footer>
+
+  <!-- Script Tích Hợp Google Sheet -->
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzFkSR3NBCF7ekuXwDCyWw1NnKRZP9HIazgEdHlzNepPdXBbPBbXVytFMJsLOQr28L9/exec' // URL Google Apps Script của bạn
+    const form = document.getElementById('bookingForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Đang gửi thông tin...';
+
+      const formData = {
+        fullname: document.getElementById('fullname').value,
+        phone: document.getElementById('phone').value,
+        branch: document.getElementById('branch').value,
+        service: document.getElementById('service').value,
+        date: document.getElementById('date').value,
+        note: document.getElementById('note').value
+      };
+
+      fetch(scriptURL, { 
+        method: 'POST', 
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('Đã gửi thông tin đặt lịch thành công! Phòng khám sẽ liên hệ qua SĐT của quý khách trong thời gian sớm nhất.');
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'XÁC NHẬN ĐẶT LỊCH';
+      })
+      .catch(error => {
+        console.error('Lỗi!', error.message);
+        alert('Có lỗi xảy ra, vui lòng thử lại hoặc gọi trực tiếp hotline.');
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'XÁC NHẬN ĐẶT LỊCH';
+      });
+    });
+  </script>
 </body>
 </html>
