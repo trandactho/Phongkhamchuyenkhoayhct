@@ -7,28 +7,29 @@
   <link rel="manifest" href="manifest.json">
   <link rel="canonical" href="https://dailuantriyhct.com">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<!-- Cấu hình hiển thị Logo trên Android & iOS -->
-<link rel="icon" type="image/jpeg" href="logo-moi.jpg">
-<link rel="shortcut icon" type="image/jpeg" href="logo-moi.jpg">
-<link rel="apple-touch-icon" href="logo-moi.jpg">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes"><style>
+  <link rel="icon" type="image/jpeg" href="logo-moi.jpg">
+  <link rel="shortcut icon" type="image/jpeg" href="logo-moi.jpg">
+  <link rel="apple-touch-icon" href="logo-moi.jpg">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <style>
     :root {
       --primary: #0a2f1d;
       --primary-dark: #051a10;
       --accent: #c59b27;
+      --accent-light: #dfb749;
       --accent-hover: #a8821d;
       --bg-light: #fcfbf7;
       --bg-alt: #f4f1ea;
-      --text-dark: #2c3e50;
-      --text-light: #555555;
+      --text-dark: #1f2937;
+      --text-light: #4b5563;
       --white: #ffffff;
-      --shadow-soft: 0 6px 20px rgba(0,0,0,0.05);
-      --shadow-hover: 0 10px 25px rgba(0,0,0,0.1);
+      --shadow-soft: 0 8px 24px rgba(10, 47, 29, 0.06);
+      --shadow-hover: 0 12px 30px rgba(10, 47, 29, 0.12);
       --radius-sm: 8px;
       --radius-md: 12px;
-      --radius-lg: 16px;
-      --transition: all 0.3s ease;
+      --radius-lg: 18px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; scroll-behavior: smooth; }
@@ -41,11 +42,19 @@
     body { 
       background-color: var(--bg-light); 
       color: var(--text-dark); 
-      line-height: 1.65; 
-      padding-top: 95px;
+      line-height: 1.7; 
+      padding-top: 100px;
+      word-break: normal;
+      overflow-wrap: break-word;
     }
 
-    /* --- HEADER GHIM CỐ ĐỊNH CHỐNG TRÔI TRÊN MOBILE --- */
+    /* Tối ưu ngắt chữ tự nhiên cho tiêu đề */
+    h1, h2, h3, h4, .clinic-title-large, .hero-top-slogan {
+      text-wrap: balance;
+      word-break: keep-all;
+    }
+
+    /* --- HEADER GHIM CỐ ĐỊNH CHỐNG TRÔI --- */
     header { 
       background: var(--primary); 
       color: var(--white); 
@@ -54,17 +63,17 @@
       left: 0 !important; 
       width: 100% !important; 
       z-index: 99999 !important; 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25); 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+      backdrop-filter: blur(8px);
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
-      will-change: transform;
     }
     
     .header-top { 
       display: flex; 
       align-items: center; 
       justify-content: space-between; 
-      padding: 8px 16px; 
+      padding: 10px 16px; 
       border-bottom: 1px solid rgba(197, 155, 39, 0.25);
       max-width: 1200px;
       margin: 0 auto;
@@ -72,51 +81,48 @@
     }
 
     .header-logo-box {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: #ffffff;
-      border: 1.5px solid var(--accent);
+      border: 2px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       overflow: hidden;
       padding: 2px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     .header-logo-box img { width: 100%; height: 100%; object-fit: contain; }
-
-    .header-logo-spacer {
-      width: 40px;
-      height: 40px;
-      flex-shrink: 0;
-    }
+    .header-logo-spacer { width: 44px; height: 44px; flex-shrink: 0; }
 
     .clinic-title-large {
       text-align: center;
       color: var(--white);
       font-family: 'Playfair Display', serif;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       text-transform: uppercase;
-      line-height: 1.25;
-      letter-spacing: 0.2px;
+      line-height: 1.3;
+      letter-spacing: 0.3px;
       flex-grow: 1;
     }
     .clinic-title-sub {
       display: block;
-      font-size: 8.5px;
+      font-size: 9px;
       font-family: 'Roboto', sans-serif;
-      color: var(--accent);
+      color: var(--accent-light);
       font-weight: 400;
-      margin-top: 2px;
+      margin-top: 3px;
       text-transform: none;
+      letter-spacing: 0;
     }
 
     .header-nav {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 5px 12px;
+      padding: 6px 12px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -128,7 +134,7 @@
     nav ul { 
       display: flex; 
       list-style: none; 
-      gap: 8px; 
+      gap: 10px; 
       align-items: center; 
       justify-content: space-between; 
       width: 100%; 
@@ -138,173 +144,319 @@
       color: var(--white); 
       text-decoration: none; 
       font-weight: 500; 
-      font-size: 11.5px; 
+      font-size: 12px; 
       white-space: nowrap; 
       transition: var(--transition); 
-      padding: 4px 8px; 
+      padding: 5px 10px; 
       border-radius: var(--radius-sm); 
       text-align: center; 
     }
-    nav a:hover { color: var(--accent); background: rgba(255,255,255,0.08); }
+    nav a:hover { color: var(--accent-light); background: rgba(255,255,255,0.08); }
     .btn-header { 
-      background: var(--accent); 
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover)); 
       color: var(--white) !important; 
-      padding: 4px 12px; 
+      padding: 5px 16px; 
       border-radius: 20px; 
       font-weight: 700; 
-      font-size: 11.5px; 
+      font-size: 12px; 
+      box-shadow: 0 2px 8px rgba(197, 155, 39, 0.3);
     }
-    .btn-header:hover { background: var(--accent-hover); }
 
     /* --- HERO SECTION --- */
     .hero { 
-      background: linear-gradient(rgba(10, 47, 29, 0.88), rgba(10, 47, 29, 0.88)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80') center/cover; 
+      background: linear-gradient(rgba(10, 47, 29, 0.9), rgba(10, 47, 29, 0.88)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80') center/cover; 
       color: var(--white); 
       text-align: center; 
-      padding: 60px 20px; 
+      padding: 70px 20px 60px; 
     }
-    .hero-top-slogan { font-family: 'Dancing Script', cursive; font-size: 28px; color: var(--accent); margin-bottom: 10px; font-weight: 700; font-style: italic; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-    .hero h1 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--white); margin-bottom: 16px; text-transform: uppercase; line-height: 1.4; }
+    .hero-top-slogan { 
+      font-family: 'Dancing Script', cursive; 
+      font-size: 30px; 
+      color: var(--accent-light); 
+      margin-bottom: 12px; 
+      font-weight: 700; 
+      font-style: italic; 
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4); 
+    }
+    .hero h1 { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 21px; 
+      color: var(--white); 
+      margin-bottom: 20px; 
+      text-transform: uppercase; 
+      line-height: 1.45; 
+      letter-spacing: 0.5px;
+    }
     
     .hero-sub { 
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      font-size: 12.5px; 
-      color: #e2e8f0; 
-      margin: 0 auto 25px; 
+      gap: 14px;
+      font-size: 13px; 
+      color: #f3f4f6; 
+      margin: 0 auto 30px; 
       font-style: italic; 
       max-width: 650px;
+      background: rgba(255,255,255,0.06);
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(197, 155, 39, 0.2);
     }
     .hero-logo-precursor {
-      height: 42px;
+      height: 46px;
       width: auto;
-      border-radius: 4px;
+      border-radius: 6px;
       background: #ffffff;
-      padding: 2px;
+      padding: 3px;
       object-fit: contain;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
     }
-    .hero-sub-text {
-      text-align: left;
-      line-height: 1.45;
+    .hero-sub-text { text-align: left; line-height: 1.5; }
+
+    .btn-hero { 
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover)); 
+      color: var(--white); 
+      padding: 14px 36px; 
+      border-radius: 30px; 
+      text-decoration: none; 
+      font-weight: 700; 
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      transition: var(--transition); 
+      display: inline-block; 
+      box-shadow: 0 6px 20px rgba(197, 155, 39, 0.35); 
+    }
+    .btn-hero:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(197, 155, 39, 0.5); }
+
+    /* --- LAYOUT CONTAINER & SECTIONS --- */
+    .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+    .section-title { text-align: center; margin-bottom: 40px; }
+    .section-title h2 { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 28px; 
+      color: var(--primary); 
+      position: relative; 
+      display: inline-block; 
+      padding-bottom: 12px; 
+    }
+    .section-title h2::after { 
+      content: ''; 
+      width: 50px; 
+      height: 3px; 
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover)); 
+      position: absolute; 
+      bottom: 0; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      border-radius: 2px; 
     }
 
-    .btn-hero { background: var(--accent); color: var(--white); padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; transition: var(--transition); display: inline-block; box-shadow: 0 4px 15px rgba(197, 155, 39, 0.3); }
-    .btn-hero:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(197, 155, 39, 0.4); }
-
-    /* --- CONTAINER & ABOUT SECTION --- */
-    .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
-    .section-title { text-align: center; margin-bottom: 35px; }
-    .section-title h2 { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--primary); position: relative; display: inline-block; padding-bottom: 10px; }
-    .section-title h2::after { content: ''; width: 45px; height: 3px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px; }
-
+    /* About Section */
     .about-box { 
       background: var(--white); 
-      padding: 35px; 
+      padding: 40px; 
       border-radius: var(--radius-md); 
       box-shadow: var(--shadow-soft); 
-      border-left: 4px solid var(--accent); 
+      border-left: 5px solid var(--accent); 
     }
-    .about-box h3 { color: var(--primary); font-size: 20px; margin-bottom: 16px; font-family: 'Playfair Display', serif; text-transform: uppercase; line-height: 1.4; }
-    
-    .about-text { color: var(--text-light); font-size: 14.5px; line-height: 1.7; }
-    .about-text p { margin-bottom: 12px; }
+    .about-box h3 { 
+      color: var(--primary); 
+      font-size: 21px; 
+      margin-bottom: 18px; 
+      font-family: 'Playfair Display', serif; 
+      text-transform: uppercase; 
+      line-height: 1.4; 
+    }
+    .about-text { color: var(--text-light); font-size: 15px; line-height: 1.8; }
+    .about-text p { margin-bottom: 14px; }
     
     .about-highlights {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px dashed #e0e0e0;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px dashed #e5e7eb;
     }
     .highlight-item {
       background: #faf8f2;
-      padding: 12px 16px;
+      padding: 16px 20px;
       border-radius: var(--radius-sm);
       border-left: 3px solid var(--accent);
-      font-size: 13.5px;
+      font-size: 14px;
+      line-height: 1.6;
     }
-    .highlight-item strong { color: var(--primary); display: block; margin-bottom: 2px; }
+    .highlight-item strong { color: var(--primary); display: block; margin-bottom: 4px; font-size: 14.5px; }
 
-    /* --- SERVICES GRID --- */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .service-card { background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-soft); border: 1px solid #eaeaea; transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; }
-    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-    .service-img { height: 200px; width: 100%; display: block; object-fit: cover; }
-    .service-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .service-content h3 { color: var(--primary); margin-bottom: 8px; font-size: 17px; font-family: 'Playfair Display', serif; }
-    .service-content ul { padding-left: 18px; color: var(--text-light); font-size: 13.5px; }
-    .service-content li { margin-bottom: 4px; }
+    /* Services Section */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px; }
+    .service-card { 
+      background: var(--white); 
+      border-radius: var(--radius-md); 
+      overflow: hidden; 
+      box-shadow: var(--shadow-soft); 
+      border: 1px solid #f3f4f6; 
+      transition: var(--transition); 
+      display: flex; 
+      flex-direction: column; 
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .service-img { height: 190px; width: 100%; object-fit: cover; }
+    .service-content { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .service-content h3 { color: var(--primary); margin-bottom: 10px; font-size: 18px; font-family: 'Playfair Display', serif; }
+    .service-content ul { padding-left: 18px; color: var(--text-light); font-size: 14px; line-height: 1.6; }
+    .service-content li { margin-bottom: 6px; }
 
-    /* --- BỆNH LÝ CHUYÊN SÂU --- */
-    .conditions-section { background: var(--primary); color: var(--white); padding: 50px 20px; margin-top: 40px; border-radius: var(--radius-lg); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    /* Bệnh Lý Chuyên Sâu - Nổi Bật & Cân Đối */
+    .conditions-section { 
+      background: linear-gradient(145deg, var(--primary), var(--primary-dark)); 
+      color: var(--white); 
+      padding: 60px 24px; 
+      margin-top: 50px; 
+      border-radius: var(--radius-lg); 
+      box-shadow: 0 12px 35px rgba(10, 47, 29, 0.2); 
+    }
     .conditions-section .section-title h2 { color: var(--white); }
-    .conditions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; }
-    .condition-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(197, 155, 39, 0.25); border-left: 3px solid var(--accent); padding: 18px; border-radius: var(--radius-sm); transition: var(--transition); }
-    .condition-card:hover { background: rgba(255, 255, 255, 0.09); transform: translateY(-2px); }
-    .condition-card h4 { color: var(--accent); font-size: 15px; margin-bottom: 6px; font-family: 'Playfair Display', serif; }
-    .condition-card p { font-size: 13px; color: #e2e8f0; line-height: 1.5; }
+    .conditions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1140px; margin: 0 auto; }
+    .condition-card { 
+      background: rgba(255, 255, 255, 0.06); 
+      border: 1px solid rgba(197, 155, 39, 0.3); 
+      border-left: 4px solid var(--accent); 
+      padding: 20px; 
+      border-radius: var(--radius-sm); 
+      transition: var(--transition); 
+    }
+    .condition-card:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-3px); }
+    .condition-card h4 { color: var(--accent-light); font-size: 16px; margin-bottom: 8px; font-family: 'Playfair Display', serif; }
+    .condition-card p { font-size: 13.5px; color: #e5e7eb; line-height: 1.6; }
 
-    /* --- BÀI TẬP --- */
-    .exercise-link-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-    .exercise-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #faf9f5; border-radius: 6px; border: 1px solid #eee; text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 13px; transition: var(--transition); }
+    /* Exercises Section */
+    .exercise-link-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .exercise-item { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 10px 14px; 
+      background: #faf9f5; 
+      border-radius: 6px; 
+      border: 1px solid #e5e7eb; 
+      text-decoration: none; 
+      color: var(--text-dark); 
+      font-weight: 500; 
+      font-size: 13.5px; 
+      transition: var(--transition); 
+    }
     .exercise-item:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--accent); }
 
-    /* --- CHI NHÁNH --- */
+    /* Branches Section */
     .branches-bg { background-color: var(--bg-alt); }
-    .branches-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .branch-card { background: var(--white); border-radius: var(--radius-md); padding: 25px; box-shadow: var(--shadow-soft); border: 1px solid #eaeaea; display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); }
+    .branches-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+    .branch-card { 
+      background: var(--white); 
+      border-radius: var(--radius-md); 
+      padding: 30px; 
+      box-shadow: var(--shadow-soft); 
+      border: 1px solid #f3f4f6; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-between; 
+      transition: var(--transition); 
+    }
     .branch-card:hover { box-shadow: var(--shadow-hover); }
-    .branch-card h3 { color: var(--primary); font-size: 19px; margin-bottom: 12px; border-bottom: 2px solid var(--bg-alt); padding-bottom: 8px; font-family: 'Playfair Display', serif; }
-    .branch-info p { margin-bottom: 8px; font-size: 14px; color: var(--text-dark); }
-    .btn-map { margin-top: 15px; display: block; text-align: center; background: var(--primary); color: var(--white); padding: 10px 16px; border-radius: var(--radius-sm); text-decoration: none; font-weight: 500; font-size: 13.5px; transition: var(--transition); }
+    .branch-card h3 { color: var(--primary); font-size: 20px; margin-bottom: 14px; border-bottom: 2px solid var(--bg-alt); padding-bottom: 10px; font-family: 'Playfair Display', serif; }
+    .branch-info p { margin-bottom: 10px; font-size: 14.5px; color: var(--text-dark); }
+    .btn-map { 
+      margin-top: 18px; 
+      display: block; 
+      text-align: center; 
+      background: var(--primary); 
+      color: var(--white); 
+      padding: 12px 18px; 
+      border-radius: var(--radius-sm); 
+      text-decoration: none; 
+      font-weight: 500; 
+      font-size: 14px; 
+      transition: var(--transition); 
+    }
     .btn-map:hover { background: var(--primary-dark); }
 
-    /* --- FORM ĐẶT LỊCH SỬA LỖI TRÀN KHUNG --- */
-    .booking-wrapper { background: var(--white); border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-soft); max-width: 750px; margin: 0 auto; border: 1px solid #eaeaea; width: 100%; }
-    .form-grid { display: grid; grid-template-columns: 1fr; gap: 14px; width: 100%; }
-    .form-group { display: flex; flex-direction: column; gap: 5px; width: 100%; }
+    /* Booking Form Section */
+    .booking-wrapper { 
+      background: var(--white); 
+      border-radius: var(--radius-lg); 
+      padding: 30px 24px; 
+      box-shadow: var(--shadow-soft); 
+      max-width: 780px; 
+      margin: 0 auto; 
+      border: 1px solid #f3f4f6; 
+      width: 100%; 
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; width: 100%; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; width: 100%; }
     .form-group.full { grid-column: 1 / -1; }
-    .form-group label { font-weight: 600; color: var(--primary); font-size: 13px; }
+    .form-group label { font-weight: 600; color: var(--primary); font-size: 13.5px; }
     .form-group input, .form-group select, .form-group textarea { 
       width: 100%; 
       max-width: 100%; 
       box-sizing: border-box; 
-      padding: 10px 12px; 
-      border: 1px solid #ddd; 
+      padding: 12px 14px; 
+      border: 1px solid #d1d5db; 
       border-radius: var(--radius-sm); 
-      font-size: 13.5px; 
+      font-size: 14px; 
       outline: none; 
       transition: var(--transition); 
       background: #fafafa; 
     }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); background: var(--white); box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.12); }
-    .btn-submit { background: var(--accent); color: var(--white); border: none; padding: 13px; border-radius: var(--radius-sm); font-size: 14.5px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; transition: var(--transition); }
-    .btn-submit:hover { background: var(--accent-hover); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
+      border-color: var(--accent); 
+      background: var(--white); 
+      box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15); 
+    }
+    .btn-submit { 
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover)); 
+      color: var(--white); 
+      border: none; 
+      padding: 15px; 
+      border-radius: var(--radius-sm); 
+      font-size: 15px; 
+      font-weight: bold; 
+      cursor: pointer; 
+      width: 100%; 
+      margin-top: 12px; 
+      transition: var(--transition); 
+      box-shadow: 0 4px 15px rgba(197, 155, 39, 0.25);
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(197, 155, 39, 0.35); }
 
-    /* --- FOOTER --- */
-    footer { background: var(--primary-dark); color: #aaa; padding: 30px 20px; text-align: center; font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); }
-    footer a { color: var(--accent); text-decoration: underline; }
+    /* Footer */
+    footer { 
+      background: var(--primary-dark); 
+      color: #9ca3af; 
+      padding: 35px 20px; 
+      text-align: center; 
+      font-size: 13.5px; 
+      border-top: 1px solid rgba(255,255,255,0.05); 
+    }
+    footer a { color: var(--accent-light); text-decoration: underline; }
 
+    /* Tối ưu Desktop / Tablet */
     @media (min-width: 768px) {
-      body { padding-top: 100px; }
-      .header-logo-box, .header-logo-spacer { width: 50px; height: 50px; }
-      .clinic-title-large { font-size: 15px; letter-spacing: 0.4px; }
-      .clinic-title-sub { font-size: 10px; }
-      nav ul { gap: 16px; }
-      nav a { font-size: 13px; padding: 5px 10px; }
-      .btn-header { font-size: 13px; padding: 5px 14px; }
-      .hero { padding: 90px 20px; }
-      .hero h1 { font-size: 30px; }
-      .hero-top-slogan { font-size: 34px; }
-      .hero-sub { font-size: 14px; gap: 16px; }
-      .hero-logo-precursor { height: 48px; }
-      .section-title h2 { font-size: 30px; }
-      .booking-wrapper { padding: 40px; }
+      body { padding-top: 108px; }
+      .header-logo-box, .header-logo-spacer { width: 48px; height: 48px; }
+      .clinic-title-large { font-size: 15px; letter-spacing: 0.5px; }
+      .clinic-title-sub { font-size: 10.5px; }
+      nav ul { gap: 18px; }
+      nav a { font-size: 13px; padding: 6px 12px; }
+      .btn-header { font-size: 13px; padding: 6px 18px; }
+      .hero { padding: 90px 20px 80px; }
+      .hero h1 { font-size: 32px; }
+      .hero-top-slogan { font-size: 38px; }
+      .hero-sub { font-size: 14.5px; gap: 18px; }
+      .hero-logo-precursor { height: 50px; }
+      .section-title h2 { font-size: 32px; }
+      .booking-wrapper { padding: 45px; }
       .form-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -444,16 +596,14 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- Điều Trị Các Bệnh Lý Chuyên Sâu -->
     <div class="conditions-section">
-      <div class="section-title" style="margin-bottom: 25px;">
+      <div class="section-title" style="margin-bottom: 30px;">
         <h2>Điều Trị Các Bệnh Lý Chuyên Sâu</h2>
       </div>
       <div class="conditions-grid">
-        <!-- Nhóm 1: Cơ Xương Khớp - Cột Sống - Dây Thần Kinh -->
         <div class="condition-card">
           <h4>🦴 Thoái Hóa & Đau Xương Khớp</h4>
           <p>Điều trị hiệu quả các chứng đau cổ vai gáy, đau lưng, đau gối và các khớp ngón.</p>
@@ -466,8 +616,6 @@
           <h4>🔥 Đau Thần Kinh & Đau Sau Zona</h4>
           <p>Giảm nhanh các cơn đau tê do chèn ép dây thần kinh và di chứng đau sau Zona.</p>
         </div>
-
-        <!-- Nhóm 2: Thần Kinh - Tiền Đình - Nội Khoa -->
         <div class="condition-card">
           <h4>🧠 Di Chứng Thần Kinh & Liệt</h4>
           <p>Hỗ trợ điều trị liệt nửa người, liệt mặt do tổn thương dây thần kinh số 5 và số 7.</p>
@@ -480,8 +628,6 @@
           <h4>🌿 Tiêu Hóa & Hô Hấp</h4>
           <p>Hỗ trợ điều trị trào ngược dạ dày thực quản, viêm mũi xoang kinh niên.</p>
         </div>
-
-        <!-- Nhóm 3: Thể Trạng Mãn Tính & Sinh Lý Nam Nữ -->
         <div class="condition-card">
           <h4>🧓 Suy Nhược Cơ Thể & Bệnh Người Già</h4>
           <p>Phục hồi chức năng kết hợp bồi dưỡng khí huyết, bổ âm bổ dương các bệnh lý suy nhược cơ thể mãn tính, tuổi già.</p>
@@ -495,7 +641,6 @@
           <p>Bồi bổ chính khí, điều hòa cơ thể, hỗ trợ cải thiện yếu sinh lý, rối loạn cương, xuất tinh sớm, giúp nam giới lấy lại phong độ.</p>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -504,9 +649,9 @@
     <div class="section-title">
       <h2>Cổng Tra Cứu YHCT</h2>
     </div>
-    <div style="background: var(--white); border-radius: var(--radius-lg); padding: 30px; box-shadow: var(--shadow-soft); border: 1px solid #eaeaea; text-align: center; max-width: 750px; margin: 0 auto;">
-      <h3 style="color: var(--primary); font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 10px;">Website: dailuantriyhct.com</h3>
-      <p style="color: var(--text-light); margin-bottom: 20px; font-size: 14.5px;">Truy cập cổng thông tin chính thức để cập nhật kiến thức y học cổ truyền, bài viết chuyên sâu và tư vấn sức khỏe từ chuyên gia.</p>
+    <div style="background: var(--white); border-radius: var(--radius-lg); padding: 35px 25px; box-shadow: var(--shadow-soft); border: 1px solid #f3f4f6; text-align: center; max-width: 780px; margin: 0 auto;">
+      <h3 style="color: var(--primary); font-family: 'Playfair Display', serif; font-size: 21px; margin-bottom: 12px;">Website: dailuantriyhct.com</h3>
+      <p style="color: var(--text-light); margin-bottom: 22px; font-size: 15px; line-height: 1.6;">Truy cập cổng thông tin chính thức để cập nhật kiến thức y học cổ truyền, bài viết chuyên sâu và tư vấn sức khỏe từ chuyên gia.</p>
       <a href="https://dailuantriyhct.com" target="_blank" class="btn-hero">Truy Cập dailuantriyhct.com</a>
     </div>
   </section>
@@ -516,14 +661,14 @@
     <div class="section-title">
       <h2>Bài Tập Trị Liệu Tại Nhà</h2>
     </div>
-    <p style="text-align: center; color: var(--text-light); margin-bottom: 25px; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 14px;">Các bài tập vận động hỗ trợ giúp giảm đau mỏi cổ vai gáy và cột sống lưng hiệu quả do phòng khám biên soạn.</p>
+    <p style="text-align: center; color: var(--text-light); margin-bottom: 28px; max-width: 720px; margin-left: auto; margin-right: auto; font-size: 14.5px;">Các bài tập vận động hỗ trợ giúp giảm đau mỏi cổ vai gáy và cột sống lưng hiệu quả do phòng khám biên soạn.</p>
     
     <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
       <div class="service-card">
         <div class="service-content">
           <div>
             <h3>🧘 Bài Tập Cổ</h3>
-            <p style="color: var(--text-light); font-size: 13.5px; margin-bottom: 12px;">Hướng dẫn các động tác vận động vùng cổ giúp thư giãn cơ và giảm đau mỏi hiệu quả.</p>
+            <p style="color: var(--text-light); font-size: 14px; margin-bottom: 14px; line-height: 1.6;">Hướng dẫn các động tác vận động vùng cổ giúp thư giãn cơ và giảm đau mỏi hiệu quả.</p>
           </div>
           <a href="https://fb.watch/i1awqCp0PA/?mibextid=qC1gEa" target="_blank" class="btn-map" style="margin-top: 12px;">▶ Xem Video Bài Tập Cổ</a>
         </div>
@@ -533,7 +678,7 @@
         <div class="service-content">
           <div>
             <h3>🏋️ Hệ Thống Bài Tập Lưng</h3>
-            <p style="color: var(--text-light); font-size: 13.5px; margin-bottom: 8px;">Chuỗi bài tập vận động cột sống lưng từ cơ bản đến chuyên sâu:</p>
+            <p style="color: var(--text-light); font-size: 14px; margin-bottom: 10px;">Chuỗi bài tập vận động cột sống lưng từ cơ bản đến chuyên sâu:</p>
             <div class="exercise-link-list">
               <a href="https://fb.watch/i1aKxNfrpx/?mibextid=qC1gEa" target="_blank" class="exercise-item"><span>📌 Bài Tập Lưng 1</span> <span>Xem &rarr;</span></a>
               <a href="https://fb.watch/i1aJ93lj_a/?mibextid=qC1gEa" target="_blank" class="exercise-item"><span>📌 Bài Tập Lưng 2</span> <span>Xem &rarr;</span></a>
@@ -633,7 +778,7 @@
 
   <!-- Script Tích Hợp Google Sheet -->
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzFkSR3NBCF7ekuXwDCyWw1NnKRZP9HIazgEdHlzNepPdXBbPBbXVytFMJsLOQr28L9/exec' // URL Google Apps Script của bạn
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzFkSR3NBCF7ekuXwDCyWw1NnKRZP9HIazgEdHlzNepPdXBbPBbXVytFMJsLOQr28L9/exec';
     const form = document.getElementById('bookingForm');
     const submitBtn = document.getElementById('submitBtn');
 
