@@ -188,33 +188,50 @@
       letter-spacing: 0.5px;
     }
     
-    .hero-sub { 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      font-size: 13px; 
-      color: #f3f4f6; 
-      margin: 0 auto 30px; 
-      font-style: italic; 
-      max-width: 650px;
-      background: rgba(255,255,255,0.06);
-      padding: 12px 20px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(197, 155, 39, 0.2);
-    }
-    .hero-logo-precursor {
-      height: 46px;
-      width: auto;
-      border-radius: 6px;
-      background: #ffffff;
-      padding: 3px;
-      object-fit: contain;
-      flex-shrink: 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-    }
-    .hero-sub-text { text-align: left; line-height: 1.5; }
+    .nowrap { white-space: nowrap; }
 
+.hero-sub { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 13px; 
+  color: #f3f4f6; 
+  margin: 0 auto 30px; 
+  font-style: italic; 
+  max-width: 650px;
+  background: rgba(255,255,255,0.06);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(197, 155, 39, 0.2);
+}
+
+.hero-logo-precursor {
+  height: 46px;
+  width: auto;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 3px;
+  object-fit: contain;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+.hero-sub-text { text-align: left; line-height: 1.45; }
+
+/* Tự động chuyển dọc và căn giữa đẹp mắt trên màn hình nhỏ */
+@media (max-width: 480px) {
+  .hero-sub {
+    flex-direction: column;
+    padding: 12px 15px;
+    gap: 8px;
+    text-align: center;
+  }
+  .hero-sub-text {
+    text-align: center;
+    font-size: 12px;
+  }
+}
     .btn-hero { 
       background: linear-gradient(135deg, var(--accent), var(--accent-hover)); 
       color: var(--white); 
@@ -498,12 +515,13 @@
     <h1>PHÒNG KHÁM CHUYÊN KHOA Y HỌC CỔ TRUYỀN - VẬT LÝ TRỊ LIỆU PHỤC HỒI CHỨC NĂNG</h1>
     
     <div class="hero-sub">
-      <img src="logo-tien-than.jpg" alt="Logo Tiền Thân" class="hero-logo-precursor">
-      <div class="hero-sub-text">
-        Tiền thân: Phòng khám Bs.Trang - Sophie's Clinic,<br>
-        Phòng khám Spine trị liệu cột sống
-      </div>
-    </div>
+  <img src="logo-tien-than.jpg" alt="Logo Tiền Thân" class="hero-logo-precursor">
+  <div class="hero-sub-text">
+    <div>Tiền thân: Phòng khám Bs.Trang - <span class="nowrap">Sophie's Clinic,</span></div>
+    <div>Phòng khám Spine trị liệu cột sống</div>
+  </div>
+</div>
+
 
     <a href="#booking" class="btn-hero">ĐẶT LỊCH KHÁM NGAY</a>
   </section>
