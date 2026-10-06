@@ -800,9 +800,18 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Ngày khám dự kiến *</label>
-            <input type="date" id="date" required>
-          </div>
+  <label>Ngày khám dự kiến *</label>
+  <input type="date" id="date" required>
+</div>
+
+<!-- Bổ sung thẻ chọn khung giờ bị thiếu -->
+<div class="form-group">
+  <label>Chọn khung giờ rảnh *</label>
+  <select id="time" required>
+    <option value="">-- Vui lòng chọn ngày và chi nhánh trước --</option>
+  </select>
+</div>
+
           <div class="form-group full">
             <label>Triệu chứng / Ghi chú</label>
             <textarea id="note" rows="3" placeholder="Mô tả ngắn gọn tình trạng bệnh (đau lưng, mất ngủ, vai gáy...)..."></textarea>
@@ -821,42 +830,121 @@
 
   <!-- Script Tích Hợp Google Sheet -->
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzFkSR3NBCF7ekuXwDCyWw1NnKRZP9HIazgEdHlzNepPdXBbPBbXVytFMJsLOQr28L9/exec';
-    const form = document.getElementById('bookingForm');
-    const submitBtn = document.getElementById('submitBtn');
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxLoDYaYOlKfOMHMsC4c4GtlBJJAvaSDfZUJIqiioZYw1JQdVHr8IFlrtX2NG-2Qcx7/exec';
+  const form = document.getElementById('bookingForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const dateInput = document.getElementById('date');
+  const branchInput = document.getElementById('branch');
+  const timeSelect = document.getElementById('time');
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      submitBtn.disabled = true;
-      submitBtn.innerText = 'Đang gửi thông tin...';
+  function generateTimeSlots(startHour, endHour) {
+    const slots = [];
+    for (let hour = startHour; hour < endHour; hour++) {
+      for (let min = 0; min < 60; min += 15) {
+        const h = hour.toString().padStart(2, '0');
+        const m = min.toString().padStart(2, '0');
+        slots.push(`${h}:${m}`);
+      }
+    }
+    return slots;
+  }
 
-      const formData = {
-        fullname: document.getElementById('fullname').value,
-        phone: document.getElementById('phone').value,
-        branch: document.getElementById('branch').value,
-        service: document.getElementById('service').value,
-        date: document.getElementById('date').value,
-        note: document.getElementById('note').value
-      };
+  async function updateAvailableSlots() {
+    const selectedDateStr = dateInput.value;
+    const selectedBranch = branchInput.value;
 
-      fetch(scriptURL, { 
-        method: 'POST', 
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        alert('Đã gửi thông tin đặt lịch thành công! Phòng khám sẽ liên hệ qua SĐT của quý khách trong thời gian sớm nhất.');
+    if (!selectedDateStr || !selectedBranch) return;
+
+    const [year, month, day] = selectedDateStr.split('-').map(Number);
+    const dateObj = new Date(year, month - 1, day);
+    const dayOfWeek = dateObj.getDay();
+
+    timeSelect.innerHTML = '<option value="">Đang kiểm tra khung giờ rảnh...</option>';
+
+    let allSlots = [];
+
+    if (selectedBranch.includes("Qmedic")) {
+      if ([1, 3, 5].includes(dayOfWeek)) {
+        allSlots = generateTimeSlots(8, 12);
+      } else if (dayOfWeek === 6) {
+        allSlots = generateTimeSlots(8, 16);
+      } else {
+        timeSelect.innerHTML = '<option value="">Qmedic chỉ nhận lịch Thứ 2, 4, 6 và Thứ 7</option>';
+        return;
+      }
+    } else {
+      allSlots = generateTimeSlots(8, 17);
+    }
+
+    try {
+      const fetchUrl = `${scriptURL}?date=${encodeURIComponent(selectedDateStr)}&branch=${encodeURIComponent(selectedBranch)}`;
+      const res = await fetch(fetchUrl);
+      const data = await res.json();
+
+      if (data.status === 'error') {
+        alert(`[LỖI SERVER GET]: ${data.message}`);
+        timeSelect.innerHTML = `<option value="">Lỗi: ${data.message}</option>`;
+        return;
+      }
+
+      const bookedSlots = data.bookedSlots || [];
+      const availableSlots = allSlots.filter(slot => !bookedSlots.includes(slot));
+
+      timeSelect.innerHTML = '<option value="">-- Chọn khung giờ --</option>';
+      if (availableSlots.length === 0) {
+        timeSelect.innerHTML = '<option value="">Ngày này đã kín tất cả khung giờ</option>';
+      } else {
+        availableSlots.forEach(slot => {
+          const option = document.createElement('option');
+          option.value = slot;
+          option.textContent = slot;
+          timeSelect.appendChild(option);
+        });
+      }
+    } catch (err) {
+      alert(`[LỖI TRÌNH DUYỆT GET]: ${err.message}`);
+      timeSelect.innerHTML = '<option value="">Không thể lấy khung giờ. Vui lòng thử lại.</option>';
+    }
+  }
+
+  dateInput.addEventListener('change', updateAvailableSlots);
+  branchInput.addEventListener('change', updateAvailableSlots);
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Đang gửi thông tin...';
+
+    const params = new URLSearchParams();
+    params.append('fullname', document.getElementById('fullname').value);
+    params.append('phone', document.getElementById('phone').value);
+    params.append('branch', branchInput.value);
+    params.append('service', document.getElementById('service').value);
+    params.append('date', dateInput.value);
+    params.append('time', timeSelect.value);
+    params.append('note', document.getElementById('note').value);
+
+    fetch(scriptURL, { 
+      method: 'POST', 
+      body: params 
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert('Đã gửi thông tin đặt lịch thành công!');
         form.reset();
-        submitBtn.disabled = false;
-        submitBtn.innerText = 'XÁC NHẬN ĐẶT LỊCH';
-      })
-      .catch(error => {
-        console.error('Lỗi!', error.message);
-        alert('Có lỗi xảy ra, vui lòng thử lại hoặc gọi trực tiếp hotline.');
-        submitBtn.disabled = false;
-        submitBtn.innerText = 'XÁC NHẬN ĐẶT LỊCH';
-      });
+      } else {
+        alert(`[LỖI TỪ SERVER GOOGLE]:\n${data.message}`);
+      }
+      submitBtn.disabled = false;
+      submitBtn.innerText = 'XÁC NHẬN ĐẶT LỊCH';
+    })
+    .catch(error => {
+      alert(`[LỖI KẾT NỐI/CORS]: Mạng hoặc URL Script bị chặn.\nChi tiết: ${error.message}`);
+      submitBtn.disabled = false;
+      submitBtn.innerText = 'XÁC NHẬN ĐẶT LỊCH';
     });
-  </script>
+  });
+</script>
 </body>
 </html>
