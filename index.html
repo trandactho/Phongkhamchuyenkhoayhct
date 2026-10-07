@@ -190,48 +190,47 @@
     
     .nowrap { white-space: nowrap; }
 
-.hero-sub { 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  font-size: 13px; 
-  color: #f3f4f6; 
-  margin: 0 auto 30px; 
-  font-style: italic; 
-  max-width: 650px;
-  background: rgba(255,255,255,0.06);
-  padding: 12px 18px;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(197, 155, 39, 0.2);
-}
+    .hero-sub { 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 13px; 
+      color: #f3f4f6; 
+      margin: 0 auto 30px; 
+      font-style: italic; 
+      max-width: 650px;
+      background: rgba(255,255,255,0.06);
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(197, 155, 39, 0.2);
+    }
 
-.hero-logo-precursor {
-  height: 46px;
-  width: auto;
-  border-radius: 6px;
-  background: #ffffff;
-  padding: 3px;
-  object-fit: contain;
-  flex-shrink: 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-}
+    .hero-logo-precursor {
+      height: 46px;
+      width: auto;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 3px;
+      object-fit: contain;
+      flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    }
 
-.hero-sub-text { text-align: left; line-height: 1.45; }
+    .hero-sub-text { text-align: left; line-height: 1.45; }
 
-/* Tự động chuyển dọc và căn giữa đẹp mắt trên màn hình nhỏ */
-@media (max-width: 480px) {
-  .hero-sub {
-    flex-direction: column;
-    padding: 12px 15px;
-    gap: 8px;
-    text-align: center;
-  }
-  .hero-sub-text {
-    text-align: center;
-    font-size: 12px;
-  }
-}
+    @media (max-width: 480px) {
+      .hero-sub {
+        flex-direction: column;
+        padding: 12px 15px;
+        gap: 8px;
+        text-align: center;
+      }
+      .hero-sub-text {
+        text-align: center;
+        font-size: 12px;
+      }
+    }
     .btn-hero { 
       background: linear-gradient(135deg, var(--accent), var(--accent-hover)); 
       color: var(--white); 
@@ -326,7 +325,7 @@
     .service-content ul { padding-left: 18px; color: var(--text-light); font-size: 14px; line-height: 1.6; }
     .service-content li { margin-bottom: 6px; }
 
-    /* Bệnh Lý Chuyên Sâu - Nổi Bật & Cân Đối */
+    /* Bệnh Lý Chuyên Sâu */
     .conditions-section { 
       background: linear-gradient(145deg, var(--primary), var(--primary-dark)); 
       color: var(--white); 
@@ -415,29 +414,29 @@
     .form-group.full { grid-column: 1 / -1; }
     .form-group label { font-weight: 600; color: var(--primary); font-size: 13.5px; }
     .form-group input, 
-.form-group select, 
-.form-group textarea { 
-  width: 100%; 
-  max-width: 100%; 
-  box-sizing: border-box; 
-  padding: 0 12px; 
-  height: 44px; /* Cố định chiều cao tất cả ô nhập bằng nhau */
-  border: 1px solid #d1d5db; 
-  border-radius: var(--radius-sm); 
-  font-size: 13.5px; 
-  outline: none; 
-  transition: var(--transition); 
-  background: #fafafa; 
-}
+    .form-group select, 
+    .form-group textarea { 
+      width: 100%; 
+      max-width: 100%; 
+      box-sizing: border-box; 
+      padding: 0 12px; 
+      height: 44px; 
+      border: 1px solid #d1d5db; 
+      border-radius: var(--radius-sm); 
+      font-size: 13.5px; 
+      outline: none; 
+      transition: var(--transition); 
+      background: #fafafa; 
+    }
 
-.form-group textarea {
-  height: auto;
-  padding: 10px 12px;
-}
+    .form-group textarea {
+      height: auto;
+      padding: 10px 12px;
+    }
 
-.form-group select option {
-  font-size: 12px;
-}
+    .form-group select option {
+      font-size: 12px;
+    }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
       border-color: var(--accent); 
       background: var(--white); 
@@ -470,7 +469,6 @@
     }
     footer a { color: var(--accent-light); text-decoration: underline; }
 
-    /* Tối ưu Desktop / Tablet */
     @media (min-width: 768px) {
       body { padding-top: 108px; }
       .header-logo-box, .header-logo-spacer { width: 48px; height: 48px; }
@@ -527,13 +525,12 @@
     <h1>PHÒNG KHÁM CHUYÊN KHOA Y HỌC CỔ TRUYỀN - VẬT LÝ TRỊ LIỆU PHỤC HỒI CHỨC NĂNG</h1>
     
     <div class="hero-sub">
-  <img src="logo-tien-than.jpg" alt="Logo Tiền Thân" class="hero-logo-precursor">
-  <div class="hero-sub-text">
-    <div>Tiền thân: Phòng khám Bs.Trang - <span class="nowrap">Sophie's Clinic,</span></div>
-    <div>Phòng khám Spine trị liệu cột sống</div>
-  </div>
-</div>
-
+      <img src="logo-tien-than.jpg" alt="Logo Tiền Thân" class="hero-logo-precursor">
+      <div class="hero-sub-text">
+        <div>Tiền thân: Phòng khám Bs.Trang - <span class="nowrap">Sophie's Clinic,</span></div>
+        <div>Phòng khám Spine trị liệu cột sống</div>
+      </div>
+    </div>
 
     <a href="#booking" class="btn-hero">ĐẶT LỊCH KHÁM NGAY</a>
   </section>
@@ -722,7 +719,7 @@
     </div>
   </section>
 
-    <!-- Branches Section -->
+  <!-- Branches Section -->
   <section id="branches" class="branches-bg">
     <div class="container">
       <div class="section-title">
@@ -800,17 +797,16 @@
             </select>
           </div>
           <div class="form-group">
-  <label>Ngày khám dự kiến *</label>
-  <input type="date" id="date" required>
-</div>
+            <label>Ngày khám dự kiến *</label>
+            <input type="date" id="date" required>
+          </div>
 
-<!-- Bổ sung thẻ chọn khung giờ bị thiếu -->
-<div class="form-group">
-  <label>Chọn khung giờ rảnh *</label>
-  <select id="time" required>
-    <option value="">-- Vui lòng chọn ngày và chi nhánh trước --</option>
-  </select>
-</div>
+          <div class="form-group">
+            <label>Chọn khung giờ rảnh *</label>
+            <select id="time" required>
+              <option value="">-- Vui lòng chọn ngày và chi nhánh trước --</option>
+            </select>
+          </div>
 
           <div class="form-group full">
             <label>Triệu chứng / Ghi chú</label>
@@ -821,130 +817,127 @@
       </form>
     </div>
   </section>
-  
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 PHÒNG KHÁM CHUYÊN KHOA Y HỌC CỔ TRUYỀN - VẬT LÝ TRỊ LIỆU PHỤC HỒI CHỨC NĂNG (<a href="https://dailuantriyhct.com" target="_blank">dailuantriyhct.com</a>). Hotline/Zalo: 0326992911. Tất cả quyền được bảo lưu.</p>
   </footer>
 
-  <!-- Script Tích Hợp Google Sheet -->
+      <!-- Script Tích Hợp Google Sheet -->
   <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxLoDYaYOlKfOMHMsC4c4GtlBJJAvaSDfZUJIqiioZYw1JQdVHr8IFlrtX2NG-2Qcx7/exec';
-  const form = document.getElementById('bookingForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const dateInput = document.getElementById('date');
-  const branchInput = document.getElementById('branch');
-  const timeSelect = document.getElementById('time');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyf9bkBYix9lXpZnzUdl8wRbLHOXZCkc9ygoAHbFwMtuhcKIRWer8Qfyzp9AiTb8iKk/exec';
+    const form = document.getElementById('bookingForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const dateInput = document.getElementById('date');
+    const branchInput = document.getElementById('branch');
+    const timeSelect = document.getElementById('time');
 
-  function generateTimeSlots(startHour, endHour) {
-    const slots = [];
-    for (let hour = startHour; hour < endHour; hour++) {
-      for (let min = 0; min < 60; min += 15) {
-        const h = hour.toString().padStart(2, '0');
-        const m = min.toString().padStart(2, '0');
-        slots.push(`${h}:${m}`);
+    dateInput.addEventListener('change', updateAvailableSlots);
+    branchInput.addEventListener('change', updateAvailableSlots);
+
+    // Hàm tạo danh sách khung giờ
+    function generateTimeSlots(startHour, endHour) {
+      const slots = [];
+      for (let hour = startHour; hour <= endHour; hour++) {
+        for (let min = 0; min < 60; min += 15) {
+          if (hour === endHour) {
+            const h = hour.toString().padStart(2, '0');
+            slots.push(`${h}:00`);
+            break;
+          }
+          const h = hour.toString().padStart(2, '0');
+          const m = min.toString().padStart(2, '0');
+          slots.push(`${h}:${m}`);
+        }
       }
+      return slots;
     }
-    return slots;
-  }
 
-  async function updateAvailableSlots() {
-    const selectedDateStr = dateInput.value;
-    const selectedBranch = branchInput.value;
+    // Hàm cập nhật khung giờ còn trống
+        async function updateAvailableSlots() {
+      const selectedDateStr = dateInput.value;
+      const selectedBranch = branchInput.value;
 
-    if (!selectedDateStr || !selectedBranch) return;
+      if (!selectedDateStr || !selectedBranch) return;
 
-    const [year, month, day] = selectedDateStr.split('-').map(Number);
-    const dateObj = new Date(year, month - 1, day);
-    const dayOfWeek = dateObj.getDay();
+      const [year, month, day] = selectedDateStr.split('-').map(Number);
+      const dateObj = new Date(year, month - 1, day);
+      const dayOfWeek = dateObj.getDay();
 
-    timeSelect.innerHTML = '<option value="">Đang kiểm tra khung giờ rảnh...</option>';
+      timeSelect.innerHTML = '<option value="">Đang tải khung giờ...</option>';
 
-    let allSlots = [];
+      let allSlots = [];
+      const isHoaHung = selectedBranch.includes("Qmedic") || selectedBranch.toLowerCase().includes("hoa hung") || selectedBranch.toLowerCase().includes("hoà hưng") || selectedBranch.toLowerCase().includes("hòa hưng");
 
-    if (selectedBranch.includes("Qmedic")) {
-      if ([1, 3, 5].includes(dayOfWeek)) {
-        allSlots = generateTimeSlots(8, 12);
-      } else if (dayOfWeek === 6) {
-        allSlots = generateTimeSlots(8, 16);
+      if (isHoaHung) {
+        if ([1, 3, 5].includes(dayOfWeek)) {
+          allSlots = generateTimeSlots(8, 12);
+        } else if (dayOfWeek === 6) {
+          allSlots = generateTimeSlots(8, 17);
+        } else {
+          timeSelect.innerHTML = '<option value="">93 Hòa Hưng chỉ nhận lịch Thứ 2, 4, 6 và Thứ 7</option>';
+          return;
+        }
       } else {
-        timeSelect.innerHTML = '<option value="">Qmedic chỉ nhận lịch Thứ 2, 4, 6 và Thứ 7</option>';
-        return;
-      }
-    } else {
-      allSlots = generateTimeSlots(8, 17);
-    }
-
-    try {
-      const fetchUrl = `${scriptURL}?date=${encodeURIComponent(selectedDateStr)}&branch=${encodeURIComponent(selectedBranch)}`;
-      const res = await fetch(fetchUrl);
-      const data = await res.json();
-
-      if (data.status === 'error') {
-        alert(`[LỖI SERVER GET]: ${data.message}`);
-        timeSelect.innerHTML = `<option value="">Lỗi: ${data.message}</option>`;
-        return;
+        if ([1, 2, 3, 4, 5].includes(dayOfWeek)) {
+          allSlots = generateTimeSlots(8, 17);
+        } else if (dayOfWeek === 6) {
+          allSlots = generateTimeSlots(8, 16);
+        } else {
+          timeSelect.innerHTML = '<option value="">Chi nhánh CMT8 nghỉ Chủ Nhật</option>';
+          return;
+        }
       }
 
-      const bookedSlots = data.bookedSlots || [];
-      const availableSlots = allSlots.filter(slot => !bookedSlots.includes(slot));
+      // Render ngay các khung giờ khả dụng theo thời gian thực (Local Check)
+      const now = new Date();
+      const isToday = (year === now.getFullYear() && month === (now.getMonth() + 1) && day === now.getDate());
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
+      let availableSlots = allSlots.filter(slot => {
+        if (isToday) {
+          const [h, m] = slot.split(':').map(Number);
+          return (h * 60 + m) > currentMinutes;
+        }
+        return true;
+      });
+
+      // Hiển thị danh sách ban đầu tức thì
       timeSelect.innerHTML = '<option value="">-- Chọn khung giờ --</option>';
-      if (availableSlots.length === 0) {
-        timeSelect.innerHTML = '<option value="">Ngày này đã kín tất cả khung giờ</option>';
-      } else {
-        availableSlots.forEach(slot => {
-          const option = document.createElement('option');
-          option.value = slot;
-          option.textContent = slot;
-          timeSelect.appendChild(option);
-        });
+      availableSlots.forEach(slot => {
+        const option = document.createElement('option');
+        option.value = slot;
+        option.textContent = slot;
+        timeSelect.appendChild(option);
+      });
+
+      // Gọi API ngầm để loại bỏ các slot đã bị đặt (Async Update)
+      try {
+        const fetchUrl = `${scriptURL}?date=${encodeURIComponent(selectedDateStr)}&branch=${encodeURIComponent(selectedBranch)}`;
+        const res = await fetch(fetchUrl);
+        const data = await res.json();
+
+        if (data.status === 'success' && data.bookedSlots && data.bookedSlots.length > 0) {
+          const bookedSlots = data.bookedSlots;
+          availableSlots = availableSlots.filter(slot => !bookedSlots.includes(slot));
+
+          timeSelect.innerHTML = '<option value="">-- Chọn khung giờ --</option>';
+          if (availableSlots.length === 0) {
+            timeSelect.innerHTML = '<option value="">Không còn khung giờ rảnh cho ngày này</option>';
+          } else {
+            availableSlots.forEach(slot => {
+              const option = document.createElement('option');
+              option.value = slot;
+              option.textContent = slot;
+              timeSelect.appendChild(option);
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Lỗi cập nhật lịch đã đặt: ", err);
       }
-    } catch (err) {
-      alert(`[LỖI TRÌNH DUYỆT GET]: ${err.message}`);
-      timeSelect.innerHTML = '<option value="">Không thể lấy khung giờ. Vui lòng thử lại.</option>';
     }
-  }
 
-  dateInput.addEventListener('change', updateAvailableSlots);
-  branchInput.addEventListener('change', updateAvailableSlots);
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.innerText = 'Đang gửi thông tin...';
-
-    const params = new URLSearchParams();
-    params.append('fullname', document.getElementById('fullname').value);
-    params.append('phone', document.getElementById('phone').value);
-    params.append('branch', branchInput.value);
-    params.append('service', document.getElementById('service').value);
-    params.append('date', dateInput.value);
-    params.append('time', timeSelect.value);
-    params.append('note', document.getElementById('note').value);
-
-    fetch(scriptURL, { 
-      method: 'POST', 
-      body: params 
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === 'success') {
-        alert('Đã gửi thông tin đặt lịch thành công!');
-        form.reset();
-      } else {
-        alert(`[LỖI TỪ SERVER GOOGLE]:\n${data.message}`);
-      }
-      submitBtn.disabled = false;
-      submitBtn.innerText = 'XÁC NHẬN ĐẶT LỊCH';
-    })
-    .catch(error => {
-      alert(`[LỖI KẾT NỐI/CORS]: Mạng hoặc URL Script bị chặn.\nChi tiết: ${error.message}`);
-      submitBtn.disabled = false;
-      submitBtn.innerText = 'XÁC NHẬN ĐẶT LỊCH';
-    });
-  });
-</script>
+  </script>
 </body>
 </html>
